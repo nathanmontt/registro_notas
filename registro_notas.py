@@ -4,13 +4,28 @@ from reportlab.lib              import colors
 from reportlab.platypus         import Table, TableStyle
 
 students_list = []
+student_tuple = ()
 
 while True:
-    menu_options = input("digite\n1 pra adicionar 2 pra remover e 3 pra sair").strip()
+    menu_options = input("digite\n1 pra adicionar 2 pra mostrar e 3 pra sair: ").strip()
     match menu_options:
         case "1":
-            break
+            while True:
+                student_name = input("nome do aluno: ")
+                student_subject = input("nome da materia: ")
+                student_grade = float(input("nota: "))
+
+                # student_tuple = (student_name, student_subject, student_grade)
+                # students_list = student_tuple
+
+                continue_option = input("deseja continuar - s para sim, n para não: ")
+                if not continue_option.lower() in ("sair", "cancelar", "s"):
+                    break
+
         case "2":
+            for student_name, subject, grade in students_list:
+                print(student_name, subject, grade)
+            
             break
         case "3":
             break
