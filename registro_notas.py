@@ -15,18 +15,17 @@ while True:
                 student_subject = input("nome da materia: ")
                 student_grade = float(input("nota: "))
 
-                # student_tuple = (student_name, student_subject, student_grade)
-                # students_list = student_tuple
 
                 continue_option = input("deseja continuar - s para sim, n para não: ")
                 if not continue_option.lower() in ("sair", "cancelar", "s"):
                     break
 
+                student_tuple = (student_name, student_subject, student_grade)
+                students_list.append(student_tuple)
         case "2":
-            for student_name, subject, grade in students_list:
-                print(student_name, subject, grade)
+            [print(student_name, subject, grade) for student_name, subject, grade in students_list]
+            # for student_name, subject, grade in students_list+1:
             
-            break
         case "3":
             break
         case _:
