@@ -15,7 +15,21 @@ while True:
     match menu_options:
         case "1":
             while True:
-                student_name = input("Nome do aluno: ").capitalize().strip()
+                while True:
+                    student_name = input("Nome do aluno: ").capitalize().strip()
+                    name_repeated = False
+
+                    for each_student in students_list:
+                        if each_student[0] == student_name:
+                            name_repeated = True
+                            break
+
+                    if name_repeated:
+                        print("Esse aluno já foi cadastrado. Digite outro nome.")
+                        continue
+
+                    break
+
                 student_subject = input("Matéria: ").capitalize().strip()
                 while not student_subject in subjects:
                     student_subject = input("Digite uma matéria válida: ").capitalize().strip()
@@ -36,9 +50,16 @@ while True:
 
         case "2":
             # [print(student_name, subject, grade) for student_name, subject, grade in students_list]
-            print(f"{'NOME':<10} | {'MATÉRIA':<10} | {'NOTA':>6}")
+            print(f"{'NOME':^10} | {'MATÉRIA':^10} | {'NOTA':^10} | {'SITUAÇÃO':^10}")
             for student_name, subject, grade in students_list:
-                print(f"{student_name:<10} | {subject:<10} | {grade:>6.2f}")
+                if grade >= 7:
+                    result = "Aprovado"
+                elif 5 < grade < 6.9:
+                    result = "Recuperação"
+                else:
+                    result = "Reprovado"
+
+                print(f"{student_name:^10} | {subject:^10} | {grade:^10.2f} | {result:^10}")
             
         case "3":
             break
