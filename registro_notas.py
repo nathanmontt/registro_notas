@@ -15,22 +15,23 @@ while True:
     match menu_options:
         case "1":
             while True:
+                student_name = input("Nome do aluno: ").capitalize().strip()
+                
                 while True:
-                    student_name = input("Nome do aluno: ").capitalize().strip()
-                    name_repeated = False
+                    student_subject = input("Matéria: ").capitalize().strip()
+                    subjetct_repeated = False
 
-                    for each_student in students_list:
-                        if each_student[0] == student_name:
-                            name_repeated = True
+                    for each_subject in students_list:
+                        if each_subject[1] == student_subject:
+                            subjetct_repeated = True
                             break
 
-                    if name_repeated:
-                        print("Esse aluno já foi cadastrado. Digite outro nome.")
+                    if subjetct_repeated:
+                        print("Essa matéria já foi cadastrada. Digite outra.")
                         continue
 
                     break
 
-                student_subject = input("Matéria: ").capitalize().strip()
                 while not student_subject in subjects:
                     student_subject = input("Digite uma matéria válida: ").capitalize().strip()
 
