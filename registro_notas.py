@@ -2,6 +2,59 @@ from reportlab.pdfgen           import canvas
 from reportlab.lib.pagesizes    import A4
 from reportlab.lib              import colors
 from reportlab.platypus         import Table, TableStyle
+from time                       import sleep
+
+def generate_pdf():
+    if not students_list:
+        print("Não há informações para gerar o PDF.")
+        return
+
+    pdf = canvas.Canvas("registro_notas.pdf", pagesize=A4)
+    pdf.setTitle("Registro de notas")
+
+    pdf.setFontSize(18)
+    pdf.drawCentredString(300, 800, "REGISTRO DE NOTAS")
+
+    table_data = [["Nome", "Matéria", "Nota", "Situação"]]
+
+    for student_name, subject, grade in students_list:
+        if grade >= 7:
+            result = "Aprovado"
+        elif grade >= 5:
+            result = "Recuperação"
+        else:
+            result = "Reprovado"
+
+        table_data.append([
+            student_name,
+            subject,
+            f"{grade:.2f}",
+            result
+        ])
+
+    students_table = Table(
+        table_data,
+        colWidths=[150, 150, 70, 100]
+    )
+
+    students_table.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), colors.lightgrey),
+        ("GRID", (0, 0), (-1, -1), 1, colors.black),
+        ("ALIGN", (2, 1), (2, -1), "CENTER"),
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+    ]))
+
+    table_width, table_height = students_table.wrapOn(pdf, 0, 0)
+    students_table.drawOn(pdf, 40, 740 - table_height)
+
+    pdf.save()
+    print("Criando pdf", end="")
+    for i in range(5):
+        sleep(.4)
+        print(".", end="")
+
+    print("PDF criado: registro_notas.pdf")
+    print()
 
 students_list = []
 student_tuple = ()
@@ -11,7 +64,15 @@ subjects = ["Matemática", "Matematica", "Gramática", "Gramatica", "Português"
 
 while True:
     print("SISTEMA DE NOTAS DE ALUNOS")
-    menu_options = input("Digite uma das opções:\n1 - Adicionar informações\n2 - Visualizar informações\n3 - Sair\n: ").strip()
+    menu_options = input(
+        "Digite uma das opções:\n"
+        "1 - Adicionar informações\n"
+        "2 - Visualizar informações\n"
+        "3 - Gerar .pdf\n"
+        "4 - Sair\n"
+        ": "
+    ).strip()
+
     match menu_options:
         case "1":
             while True:
@@ -47,7 +108,7 @@ while True:
                 if not continue_option.lower() in ("sair", "cancelar", "s"):
                     break
 
-                print()
+            print()
 
         case "2":
             # [print(student_name, subject, grade) for student_name, subject, grade in students_list]
@@ -61,8 +122,13 @@ while True:
                     result = "Reprovado"
 
                 print(f"{student_name:^10} | {subject:^10} | {grade:^10.2f} | {result:^10}")
+            print()
             
         case "3":
+            generate_pdf()
+
+        case "4":
             break
+
         case _:
             print("Opção não encontrada")
