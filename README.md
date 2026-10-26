@@ -11,8 +11,8 @@ Um programa de terminal desenvolvido em Python para gerenciar o histórico escol
 
 ## *Feats* Futuras (Em breve)
 
-- [ ] **Geração de Boletim em PDF:** Exportar a tabela de notas dos alunos em formato PDF utilizando a biblioteca `reportlab`.
-- [ ] **Exclusão de entrada errada:** Exclusão de inputs erroneamente feito
+- [x] **Geração de Boletim em PDF:** Exportar a tabela de notas dos alunos em formato PDF utilizando a biblioteca `reportlab`.
+- [ ] **Edição de *input*:** Caso o usuário tenha digitado um nome errado, uma nota errada, que a edição daquele elemento seja feita.
 
 ## Pré-requisitos
 
