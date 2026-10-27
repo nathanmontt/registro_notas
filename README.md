@@ -4,14 +4,14 @@ Um programa de terminal desenvolvido em Python para gerenciar o histórico escol
 
 ## Funcionalidades Atuais
 
-- **Cadastro de Alunos e Notas:** O usuário pode inserir o nome do aluno, a matéria e a nota final.
-- **Validação de Dados Rigorosa:** O sistema aceita apenas matérias cadastradas no sistema e limita as notas a um intervalo válido.
-- **Estruturação com Tuplas:** Os dados de cada registro são empacotados em uma tupla `(nome, materia, nota)`, garantindo que as informações inseridas não sejam alteradas acidentalmente.
-- **Boletim Interativo:** Exibição dos dados em formato de tabela diretamente no terminal, calculando automaticamente se o aluno foi *Aprovado* (>= 7), ficou em *Recuperação* (5 a 6.9) ou foi *Reprovado* (< 5).
+- **Cadastro de alunos e notas:** O usuário pode inserir o nome do aluno, a matéria e a nota final.
+- **Validação de dados rigorosa:** O sistema aceita apenas matérias cadastradas no sistema e limita as notas a um intervalo válido.
+- **Estruturação com tuplas:** Os dados de cada registro são empacotados em uma tupla `(nome, materia, nota)`, garantindo que as informações inseridas não sejam alteradas acidentalmente.
+- **Boletim interativo:** Exibição dos dados em formato de tabela diretamente no terminal, calculando automaticamente se o aluno foi *Aprovado* (>= 7), ficou em *Recuperação* (5 a 6.9) ou foi *Reprovado* (< 5).
 
 ## *Feats* Futuras (Em breve)
 
-- [x] **Geração de Boletim em PDF:** Exportar a tabela de notas dos alunos em formato PDF utilizando a biblioteca `reportlab`.
+- [x] **Geração de boletim em PDF:** Exportar a tabela de notas dos alunos em formato PDF utilizando a biblioteca `reportlab`.
 - [ ] **Edição de *input*:** Caso o usuário tenha digitado um nome errado, uma nota errada, que a edição daquele elemento seja feita.
 
 ## Pré-requisitos
